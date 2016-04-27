@@ -10,18 +10,18 @@ $(function() {
   console.log($saveBtn);
 
   // save function
-  // called every 15 seconds after change
+  // called every 5 seconds after edit and by save button
   function save() {
     if(id) 
     {
       var payload = {'note':  $textBox.html().trim(), 
-                     'title': $titleBox.html().trim(), 
+                     'title': $titleBox.text().trim(), 
                      'id':     id};
     }
     else
     {
       var payload = {'note':  $textBox.html().trim(), 
-                     'title': $titleBox.html().trim(), 
+                     'title': $titleBox.text().trim(), 
                      'id':     id};
     }
 
@@ -31,9 +31,9 @@ $(function() {
       data: payload,
       cache: false,
       success: function(data){
+        data = JSON.parse(data);
         console.log(data);
-        if(data.status)
-          $status.text(data.status);
+        $status.text(data.status);
       }
     });
   }
@@ -55,6 +55,20 @@ $(function() {
       }
     });
   }
+
+  function insertTab() {
+    
+  }
+
+  var timeout = setTimeout;
+  function autoSave() {
+    if(timeout)
+      clearTimeout(timeout);
+    timeout = setTimeout(save, 2500);
+    $status.text('editing');
+  }
+
+  $textBox.on("input", autoSave); 
 
   $saveBtn.on('click', save);
 

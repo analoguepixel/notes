@@ -4,7 +4,10 @@
   {
     if(isset($_POST['pin']))
     {
-      if($_POST['pin']=="132798")
+      $pin = $_POST['pin'];
+      $pin = hash('sha256', $pin);
+      $key = "b8ba5925257ad206e5f7bc35b20611ff51d595bfd332e904e41bf93797744985";
+      if($pin == $key)
       {
         $_SESSION['notes'] = true;
       }
@@ -20,6 +23,9 @@
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <?php if($_SESSION["color"] == "dark") { ?>
+      <link rel="stylesheet" type="text/css" href="css/dark.css">
+    <?php } ?>
     <script src="/notes/js/jq.js"></script>
     <script src="/notes/js/app.js"></script>
     <script src="app.js"></script>
@@ -58,17 +64,16 @@
               <?php
                 }
               ?>
-            </ul>
+              <li class="nav logout active">
+                <a href="color/">
+                  <div class="link-button color-toggle">
+                    A 
+                  </div>
+                </a>
+            </li>
+          </ul>
         </div>
 
-        <div class="row">
-          <h4 class="center">
-            <a href="./" 
-               style="text-decoration: none">
-                Notes
-            </a>
-          </h4>
-        </div>
         <div class="row">
           <?php
             if($_SESSION['notes'] == true)

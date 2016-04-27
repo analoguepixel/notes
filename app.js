@@ -20,7 +20,7 @@ $(function() {
     function listItem(id,title, date) {
       console.log(id + ', ' + title);
       return '<li><a href="note?id=' + id + '">' +
-             title + '<span class="date">' +
+             title + '<br><span class="date">' +
              date + '</span></a>' + '</li>';
     }
     var len = list.length;
