@@ -17,6 +17,10 @@ button:hover {
   color: #fff;
   border-color: #fff;
 }
+input[type="text"],
+input[type="password"] {
+  color: #000;
+}
 div.link-button {
   color: #aaa;
 }

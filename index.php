@@ -87,7 +87,10 @@
             else
             {
           ?>
-            <form method="POST">
+            <div class="row">
+              <h3 class="center">PIN</h3>
+            </div>
+            <form method="POST" class="login">
               <input type="password" 
                      inputmode="numeric" 
                      name="pin"

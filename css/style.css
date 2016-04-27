@@ -1,3 +1,15 @@
+form.login input {
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+  text-align: center;
+  height: 64px;
+  font-size: 2rem;
+  width: 8em;
+}
+form.login input[type="password"] {
+  qwidth: 6em;
+}
 ul {
   list-style-type: disc;
 }
@@ -6,15 +18,18 @@ ul.nav {
 	border-bottom: 1px solid #cdcdcd;
 	height: 4em;
 	list-style-type: none;
-	margin-bottom: 2em;
+	margin-bottom: 0.75em;
 }
 
 ul.nav li {
 	float: left;
-	margin: 1em 0.2em;
+	margin: 1em 0.2em 0 0.2em;
 }
 ul.nav li.logout {
   float: right;
+}
+ul.nav li input {
+  margin-bottom: 0;
 }
 ul.nav li a {
 	text-decoration: none;

@@ -61,10 +61,11 @@ $(function() {
   }
 
   var timeout = setTimeout;
+  var delay   = 750;
   function autoSave() {
     if(timeout)
       clearTimeout(timeout);
-    timeout = setTimeout(save, 2500);
+    timeout = setTimeout(save, 1500);
     $status.text('editing');
   }
 
