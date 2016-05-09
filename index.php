@@ -1,17 +1,8 @@
 <?php
   session_start();
-  if($_SERVER['REQUEST_METHOD'] == 'POST')
+  if(empty($_SESSION['notes']))
   {
-    if(isset($_POST['pin']))
-    {
-      $pin = $_POST['pin'];
-      $pin = hash('sha256', $pin);
-      $key = "44c59909f17c296d6f2ec4a53efac3a951add75aa67616d9c5d9d2f5fbb44f04";
-      if($pin == $key)
-      {
-        $_SESSION['notes'] = true;
-      }
-    }
+    header("Location: login/");
   }
 ?>
 <!DOCTYPE html>
@@ -27,7 +18,6 @@
       <link rel="stylesheet" type="text/css" href="css/dark.css">
     <?php } ?>
     <script src="/notes/js/jq.js"></script>
-    <script src="/notes/js/app.js"></script>
     <script src="app.js"></script>
 </head>
 
@@ -89,21 +79,24 @@
               {
             ?>
               <div class="row">
-                <h3 class="center">PIN</h3>
+                <h3 class="center">login</h3>
               </div>
-              <form method="POST" class="login">
+              <form method="POST" class="login" action="login.php">
+                <input type="text" 
+                       name="username"
+                       class="center loginput"
+                       placeholder="username">
+                <br>
                 <input type="password" 
-                       pattern="[0-9]*"
-                       inputmode="numeric" 
-                       name="pin"
-                       maxlength="10"
-                       class="center pin"
-                       placeholder="PIN">
+                       name="password"
+                       class="center loginput"
+                       placeholder="password">
                 <br>
                 <input type="submit" 
                        class="center"
                        value="submit">
               </form>
+
             <?php
               }
             ?>
