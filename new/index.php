@@ -21,7 +21,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Will Means</title>
+    <title>Notes - New Note</title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
     <link rel="stylesheet" type="text/css" href="../css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -68,22 +68,24 @@
             </ul>
         </div>
 
-        <div class="row title-row">
-          <h3  id="title"
-               contenteditable
-               autofocus
-               class="title">
-               Title
-          </h3>
-          <span id="noteStatus"
-                class="note-status">
-          </span>
-        </div>
-        <div class="row">
-          <div id="text"
-               contenteditable
-               autofocus
-               class="notepad center">
+        <div class="page-body">
+          <div class="row title-row">
+            <h3  id="title"
+                 contenteditable
+                 autofocus
+                 class="title">
+                 Title
+            </h3>
+            <span id="noteStatus"
+                  class="note-status">
+            </span>
+          </div>
+          <div class="row">
+            <div id="text"
+                 contenteditable
+                 autofocus
+                 class="notepad center">
+          </div>
         </div>
     </div>
 </body>

@@ -6,7 +6,7 @@
     {
       $pin = $_POST['pin'];
       $pin = hash('sha256', $pin);
-      $key = "b8ba5925257ad206e5f7bc35b20611ff51d595bfd332e904e41bf93797744985";
+      $key = "44c59909f17c296d6f2ec4a53efac3a951add75aa67616d9c5d9d2f5fbb44f04";
       if($pin == $key)
       {
         $_SESSION['notes'] = true;
@@ -19,7 +19,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Will Means</title>
+    <title>Notes</title>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -74,37 +74,40 @@
           </ul>
         </div>
 
-        <div class="row">
-          <?php
-            if($_SESSION['notes'] == true)
-            {
-          ?>
+        <div class="page-body">
+          <div class="row">
+            <?php
+              if($_SESSION['notes'] == true)
+              {
+            ?>
 
-            <ul class="note-list" id="noteList">
-            </ul>
-          <?php
-            }
-            else
-            {
-          ?>
-            <div class="row">
-              <h3 class="center">PIN</h3>
-            </div>
-            <form method="POST" class="login">
-              <input type="password" 
-                     inputmode="numeric" 
-                     name="pin"
-                     maxlength="10"
-                     class="center"
-                     placeholder="PIN">
-              <br>
-              <input type="submit" 
-                     class="center"
-                     value="submit">
-            </form>
-          <?php
-            }
-          ?>
+              <ul class="note-list" id="noteList">
+              </ul>
+            <?php
+              }
+              else
+              {
+            ?>
+              <div class="row">
+                <h3 class="center">PIN</h3>
+              </div>
+              <form method="POST" class="login">
+                <input type="password" 
+                       pattern="[0-9]*"
+                       inputmode="numeric" 
+                       name="pin"
+                       maxlength="10"
+                       class="center pin"
+                       placeholder="PIN">
+                <br>
+                <input type="submit" 
+                       class="center"
+                       value="submit">
+              </form>
+            <?php
+              }
+            ?>
+          </div>
         </div>
     </div>
 </body>

@@ -1,3 +1,21 @@
+* {
+  font-weight: 300;
+}
+body {
+  margin: 0;
+}
+div.container {
+  width: 100%;
+  padding: 0;
+}
+Qdiv.page-body {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+a {
+  color: #1EAEDB;
+}
 form.login input {
   left: 50%;
   position: relative;
@@ -20,7 +38,11 @@ ul.nav {
 	list-style-type: none;
 	margin-bottom: 0.75em;
 }
-
+ul.nav {
+  padding-left: 2%;
+  padding-right: 2%;
+  width: 96%;
+}
 ul.nav li {
 	float: left;
 	margin: 1em 0.2em 0 0.2em;
@@ -83,10 +105,15 @@ input.center {
 	margin-right: auto;
 }
 ul.note-list {
+  padding-left: 2%;
   list-style-type: none;
 } 
 ul.note-list a {
   text-decoration: none;
+  font-size: 1.2em;
+}
+ul.note-list .note-title {
+  Qfont-weight: 600;
   font-size: 1.2em;
 }
 ul.note-list span.date {
@@ -98,10 +125,15 @@ ul.note-list span.date {
   color: #565656;
   text-decoration: none;
 }
+div.page-body {
+  height: 80vh;
+}
 .title,
 div.notepad,
 .title:focus,
 div.notepad:focus {
+  font-weight: 100;
+  padding-left: 2%;
   outline: 0px solid transparent;
 }
 h3.title {
@@ -112,8 +144,8 @@ h3.title {
 div.notepad {
   border-top: 1px solid #cdcdcd;
   height: 70vh;
-  overflow: auto;
   min-height: 5em;
+  overflow: auto;
 }
 span.note-status {
   color: #565656;

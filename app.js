@@ -20,8 +20,12 @@ $(function() {
     function listItem(id,title, date) {
       console.log(id + ', ' + title);
       return '<li><a href="note?id=' + id + '">' +
-             title + '<br><span class="date">' +
-             date + '</span></a>' + '</li>';
+             '<span class="note-title">' +
+             title + 
+             '</span><br>' + 
+             '<span class="date">' +
+             date + 
+             '</span></a>' + '</li>';
     }
     var len = list.length;
     for(var i = 0; i < len; i++) {

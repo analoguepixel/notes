@@ -1,7 +1,10 @@
 body {
   background-color: #232323;
   color: #fff;
- }
+}
+a {
+  color: #1EAEDB;
+}
 ul.nav {
 	border-bottom: 1px solid #cdcdcd;
 }

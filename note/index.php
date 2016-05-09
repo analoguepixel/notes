@@ -24,7 +24,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Will Means</title>
+    <title>Note - <?=$data["title"]?></title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
     <link rel="stylesheet" type="text/css" href="../css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -76,6 +76,7 @@
             </ul>
         </div>
 
+        <div class="page-body">
         <div class="row title-row">
           <h3  id="title"
                contenteditable
@@ -94,6 +95,7 @@
                class="notepad center">
                <?= $data["body"] ?>
         </div>
+    </div>
     </div>
 </body>
 

@@ -6,11 +6,7 @@ $(function() {
   var $deleteBtn = $('#delete');
   var $status    = $('#noteStatus');
 
-  console.log($textBox);
-  console.log($saveBtn);
-
   // save function
-  // called every 5 seconds after edit and by save button
   function save() {
     if(id) 
     {
@@ -33,6 +29,12 @@ $(function() {
       success: function(data){
         data = JSON.parse(data);
         console.log(data);
+
+        // if an id is returned, set window.id to the new id
+        if(data.id && data.id > 0)
+        {
+          id = data.id;
+        }
         $status.text(data.status);
       }
     });
@@ -60,12 +62,13 @@ $(function() {
     
   }
 
+  // autosave function
   var timeout = setTimeout;
-  var delay   = 750;
+  var delay   = 1250;
   function autoSave() {
     if(timeout)
       clearTimeout(timeout);
-    timeout = setTimeout(save, 1500);
+    timeout = setTimeout(save, delay);
     $status.text('editing');
   }
 
