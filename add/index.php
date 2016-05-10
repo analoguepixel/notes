@@ -6,6 +6,21 @@
   $note = $mysqli->real_escape_string($data['note']);
   $title = $data['title'];
   $id    = $data['id'];
+  $font  = -1;
+
+  // set font value
+  if($data['font'] == 'mono')
+  {
+    $font = 2;
+  }
+  else if($data['font'] == 'serif')
+  {
+    $font = 1;
+  }
+  else
+  {
+    $font = 0;
+  }
 
   if(empty($_SESSION['notes']))
   {
@@ -24,12 +39,12 @@
       if($id > 0)
       {
         $sql = "UPDATE notes
-                SET title='$title', body='$note'
+                SET title='$title', body='$note', font=$font
                 WHERE id=$id";
       }
       else
       {
-        $sql = "INSERT INTO notes VALUES (0, 0, null, '$title', '$note' )";
+        $sql = "INSERT INTO notes VALUES (0, 0, null, '$title', '$note', $font )";
       }
 
       $exe = $mysqli->query($sql)
@@ -37,10 +52,11 @@
       if(empty($id))
         $id = $mysqli->insert_id;
 
+      // is this what is returned for confirmation?
       $out = json_encode(
         Array("status"=>"saved",
               "body"=>$note, 
-              "id"=>$id
+              "id"=>$id,
         )
       );
       echo $out;

@@ -11,8 +11,8 @@ ul.nav {
 input[type="submit"],
 input[type="button"],
 button {
-  color: #aaa;
-  border-color: #aaa;
+  color: #bbb;
+  border-color: #bbb;
 }
 input[type="submit"]:hover,
 input[type="button"]:hover,
@@ -25,7 +25,7 @@ input[type="password"] {
   color: #000;
 }
 div.link-button {
-  color: #aaa;
+  color: #bbb;
 }
 div.link-button:hover {
   color: #fff;
@@ -33,18 +33,37 @@ div.link-button:hover {
 }
 div.link-button.color-toggle {
   color: #555;
-  background: #aaa;
+  background: #bbb;
   width: 2.6em;
 }
 div.link-button.color-toggle:hover {
   color: #333;
 }
+div.row.title-row {
+  border-bottom: 1px solid #bbb;
+}
+
+/* font select section */
+div.toggle-buttons div.font-select {
+  color: #bbb;
+}
+div.toggle-buttons div.font-select:hover {
+  background-color: #555;
+}
+div.toggle-buttons div.font-select.active {
+  background-color: #bbb;
+  color: #333;
+}
+div.toggle-buttons div.font-select.active:hover {
+  color: #000;
+}
+
+/* note section */
 ul.note-list span.date {
-  color: #aaa;
+  color: #bbb;
 }
 div.notepad {
-  border-top: 1px solid #aaa;
 }
 span.note-status {
-  color: #aaa;
+  color: #bbb;
 }

@@ -17,7 +17,7 @@
       $confirm  = hash('sha256', $confirm. "salty");
 
       // return variables 
-      $status = "";
+      $status = "good";
 
       if(empty($pass) ||
          empty($confirm) || 
@@ -26,11 +26,19 @@
       {
         $status = "Please be sure to fill out all fields.";
       }
-      if($pass != $confirm)
+      else if(strlen($user < 6))
+      {
+        $status = "The minimum username length is six characters.";
+      }
+      else if(strlen($password < 6))
+      {
+        $status = "The minimum password length is six characters.";
+      }
+      else if($pass != $confirm)
       {
         $status = "Please ensure that your passwords match.";
       }
-      if($status == "")
+      else if($status == "good")
       {
         $sql = "INSERT INTO users
                 VALUES(

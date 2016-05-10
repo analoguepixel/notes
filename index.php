@@ -71,7 +71,7 @@
               {
             ?>
 
-              <ul class="note-list" id="noteList">
+              <ul class="note-list sans" id="noteList">
               </ul>
             <?php
               }

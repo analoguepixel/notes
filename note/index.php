@@ -18,6 +18,19 @@
     $myArray[] = $row;
   }
   $data = $myArray[0];
+  $font = 'sans';
+  if($data['font'] == 2)
+  {
+    $font = 'mono';
+  }
+  else if($data['font'] == 1)
+  {
+    $font = 'serif';
+  }
+  else
+  {
+    $font = 'sans';
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,12 +38,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Note - <?=$data["title"]?></title>
-    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="../css/skeleton.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <?php if($_SESSION["color"] == "dark") { ?>
-      <link rel="stylesheet" type="text/css" href="../css/dark.css">
-    <?php } ?>
+
+    <!-- include links -->
+    <?php include('../resources/links.php');?>
+
+    <!-- include scripts -->
     <script src="/notes/js/jq.js"></script>
     <script>var id = <?=$id?></script>
     <script src="../js/app.js"></script>
@@ -38,45 +50,9 @@
 
 <body>
     <div id="page" class="container">
-        <div class="row">
-            <ul class="nav">
-              <li class="nav active">
-                <a href="/notes/">
-                    <div class="link-button">
-                       Notes
-                    </div>
-                 </a>
-              </li>
-              <li>
-              <input id="save"
-                     type="submit" 
-                     class="center"
-                     value="save">
-              </li>
-              <li>
-              <input id="delete"
-                     type="submit" 
-                     class="center"
-                     value="delete">
-             </li>
-                <li class="nav logout active">
-                  <a href="../out/">
-                    <div class="link-button">
-                      Logout 
-                    </div>
-                  </a>
-              </li>
-                <li class="nav logout active">
-                  <a href="../color/">
-                    <div class="link-button color-toggle">
-                      A 
-                    </div>
-                  </a>
-              </li>
-            </ul>
-        </div>
 
-        <div class="page-body">
+      <?php require('../resources/nav.php');?>
+      <div class="page-body">
         <div class="row title-row">
           <h3  id="title"
                contenteditable
@@ -84,18 +60,32 @@
                class="title">
                <?= $data["title"] ?>
           </h3>
-          <span id="noteStatus"
-                class="note-status">
-          </span>
+          <div class="toggle-buttons">
+            <div id="fntSans" 
+                 class="font-select sans <?=$font=='sans'?'active':''?>">
+              A
+            </div>
+            <div id="fntSerif" 
+                 class="font-select serif <?=$font=='serif'?'active':''?>">
+              A
+            </div>
+            <div id="fntMono"
+                 class="font-select mono <?=$font=='mono'?'active':''?>">
+              A
+            </div>
+          </div>
         </div>
         <div class="row">
           <div id="text"
                contenteditable
                autofocus
-               class="notepad center">
+               class="notepad center <?=$font?>">
                <?= $data["body"] ?>
-        </div>
-    </div>
+          </div>
+          <span id="noteStatus"
+                class="note-status">
+          </span>
+      </div>
     </div>
 </body>
 

@@ -1,5 +1,6 @@
 * {
   font-weight: 300;
+  font-family: 'Roboto', sans-serif;
 }
 body {
   margin: 0;
@@ -87,7 +88,7 @@ div.link-button:hover {
   border-color: #888;
 }
 div.link-button.color-toggle {
-  color: #aaa;
+  color: #bbb;
   background: #555;
   width: 2.6em;
 }
@@ -95,7 +96,9 @@ div.link-button.color-toggle:hover {
   color: #fff;
 }
 div.row.title-row {
-  position: relative;
+  border-bottom: 1px solid #cdcdcd;
+  margin-bottom: 0.6em;
+  position: relative; /* needed ? */
 }
 h1.center,
 h2.center,
@@ -111,6 +114,42 @@ input.center {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+/* font select section */
+div.toggle-buttons {
+  z-index: 5;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  height: 33px;
+  width: auto;
+  float: right;
+  margin-right: 1em;
+  margin-left: 1em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  position: relative;
+}
+div.toggle-buttons div.font-select {
+  margin: 0px;
+  padding: 1px 13px;
+  float: left;
+  border: none;
+  height: 32px;
+  line-height: 32px;
+  cursor: pointer;
+}
+div.toggle-buttons div.font-select:hover {
+  background-color: #bbb;
+}
+div.toggle-buttons div.font-select.active {
+  background-color: #555;
+  color: #bbb;
+}
+div.toggle-buttons div.font-select.active:hover {
+  color: #fff;
+}
+
+/* note list section */
 ul.note-list {
   padding-left: 2%;
   list-style-type: none;
@@ -139,22 +178,40 @@ div.page-body {
 div.notepad,
 .title:focus,
 div.notepad:focus {
-  font-weight: 100;
   padding-left: 2%;
   outline: 0px solid transparent;
 }
 h3.title {
   margin-bottom: 0;
-  width: 85%;
+  position: absolute;
+  width: 95%;
   float: left;
+  z-index: 0;
 }
 div.notepad {
-  border-top: 1px solid #cdcdcd;
+  font-size: 1.2em;
+  font-weight: 300;
   height: 70vh;
   min-height: 5em;
   overflow: auto;
 }
+.sans,
+div.notepad.sans *,
+div.notepad.sans {
+  font-family: 'Roboto', sans-serif;
+}
+.serif,
+div.notepad.serif *,
+div.notepad.serif {
+  font-family: 'Roboto Slab', serif;
+}
+.mono,
+div.notepad.mono *,
+div.notepad.mono {
+  font-family: 'Roboto Mono', monospace;
+}
 span.note-status {
+  z-index: 5;
   color: #565656;
   min-width: 4em;
   float: right;
