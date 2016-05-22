@@ -9,12 +9,12 @@
       $mysqli = ConnectToDatabase();
 
       // login credentials
-      $pass     = $mysqli->real_escape_string($_POST['password']);
+      $password = $mysqli->real_escape_string($_POST['password']);
       $confirm  = $mysqli->real_escape_string($_POST['confirm']);
       $user     = $mysqli->real_escape_string($_POST['username']);
       $email    = $mysqli->real_escape_string($_POST['email']);
-      $pass     = hash('sha256', $pass . "salty");
-      $confirm  = hash('sha256', $confirm. "salty");
+      $pass     = hash('sha256', $password . "salty");
+      $confirm  = hash('sha256', $confirm . "salty");
 
       // return variables 
       $status = "good";
@@ -26,17 +26,21 @@
       {
         $status = "Please be sure to fill out all fields.";
       }
-      else if(strlen($user < 6))
+      else if(strlen($user) < 6)
       {
         $status = "The minimum username length is six characters.";
       }
-      else if(strlen($password < 6))
+      else if(strlen($password) < 6)
       {
         $status = "The minimum password length is six characters.";
       }
       else if($pass != $confirm)
       {
         $status = "Please ensure that your passwords match.";
+      }
+      else if($user == "kwilkers")
+      {
+        $status = "Sorry. Registrstion is disabled at this time.";
       }
       else if($status == "good")
       {

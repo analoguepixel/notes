@@ -5,6 +5,9 @@
 body {
   margin: 0;
 }
+.hidden {
+  display: none;
+}
 div.container {
   width: 100%;
   padding: 0;
@@ -33,7 +36,7 @@ form.login input[type="password"] {
 .message {
   width: 60%;
   margin: 0 auto;
-  color: #fcc;
+  color: #c99;
   display: block;
 }
 ul {
@@ -96,6 +99,7 @@ div.link-button.color-toggle:hover {
   color: #fff;
 }
 div.row.title-row {
+  height: 45px;
   border-bottom: 1px solid #cdcdcd;
   margin-bottom: 0.6em;
   position: relative; /* needed ? */

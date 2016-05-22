@@ -44,7 +44,7 @@
       }
       else
       {
-        $sql = "INSERT INTO notes VALUES (0, 0, null, '$title', '$note', $font )";
+        $sql = "INSERT INTO notes VALUES (0, $_SESSION[uid], null, '$title', '$note', $font )";
       }
 
       $exe = $mysqli->query($sql)

@@ -18,18 +18,32 @@
     $myArray[] = $row;
   }
   $data = $myArray[0];
-  $font = 'sans';
-  if($data['font'] == 2)
+
+  if($data["uid"] != $_SESSION["uid"])
   {
-    $font = 'mono';
-  }
-  else if($data['font'] == 1)
-  {
-    $font = 'serif';
+    $data["title"] = "No permission";
+    $data["body"] = "We're sorry, but you do not have permission to view this 
+                     note. Please contact the owner of this note for permission
+                     to view it. If the problem persists, please email us at.";
+    $data["editable"] = false;
   }
   else
   {
+    $data["editable"] = true;
+
     $font = 'sans';
+    if($data['font'] == 2)
+    {
+      $font = 'mono';
+    }
+    else if($data['font'] == 1)
+    {
+      $font = 'serif';
+    }
+    else
+    {
+      $font = 'sans';
+    }
   }
 ?>
 <!DOCTYPE html>
@@ -55,12 +69,11 @@
       <div class="page-body">
         <div class="row title-row">
           <h3  id="title"
-               contenteditable
-               autofocus
+               <?= ($data["editable"])?"contenteditable":""?>
                class="title">
                <?= $data["title"] ?>
           </h3>
-          <div class="toggle-buttons">
+          <div class="toggle-buttons <?=($data["editable"])?:"hidden"?>">
             <div id="fntSans" 
                  class="font-select sans <?=$font=='sans'?'active':''?>">
               A
@@ -77,8 +90,7 @@
         </div>
         <div class="row">
           <div id="text"
-               contenteditable
-               autofocus
+               <?= ($data["editable"])?"contenteditable autofocus":""?>
                class="notepad center <?=$font?>">
                <?= $data["body"] ?>
           </div>

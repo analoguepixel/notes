@@ -8,23 +8,30 @@
        </a>
     </li>
     <li>
-    <input id="save"
-           type="submit" 
-           class="center"
-           value="save">
-    </li>
-    <li>
-    <input id="delete"
-           type="submit" 
-           class="center"
-           value="delete">
-   </li>
-      <li class="nav logout active">
-        <a href="../out/">
-          <div class="link-button">
-            Logout
-          </div>
-        </a>
+    <?php
+      if($data["editable"])
+      {
+    ?>
+        <input id="save"
+               type="submit" 
+               class="center"
+               value="save">
+        </li>
+        <li>
+        <input id="delete"
+               type="submit" 
+               class="center"
+               value="delete">
+       </li>
+    <?php
+      }
+    ?>
+    <li class="nav logout active">
+      <a href="../out/">
+        <div class="link-button">
+          Logout
+        </div>
+      </a>
     </li>
       <li class="nav logout active">
         <a href="../color/">
