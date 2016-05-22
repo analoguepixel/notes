@@ -17,7 +17,7 @@
     <?php if($_SESSION["color"] == "dark") { ?>
       <link rel="stylesheet" type="text/css" href="css/dark.css">
     <?php } ?>
-    <script src="/notes/js/jq.js"></script>
+    <script src="js/jq.js"></script>
     <script src="app.js"></script>
 </head>
 
@@ -78,6 +78,15 @@
               else
               {
             ?>
+              <div class="row">
+                <h1 class="center">Welcome to mininotes</h1>
+                <p class="center">
+                  Ready to take notes? Login or register below.
+                </p>
+                <p class="center">
+                  Want ti find out more? <a href="about/">follow me!</a>
+                </p>
+              </div>
               <div class="row">
                 <h3 class="center">login</h3>
               </div>

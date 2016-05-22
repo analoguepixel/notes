@@ -27,9 +27,9 @@
     <?php include('../resources/links.php');?>
 
     <!-- include scripts -->
-    <script src="/notes/js/jq.js"></script>
+    <script src="/js/jq.js"></script>
     <script>var id = 0;</script>
-    <script src="../js/app.js"></script>
+    <script src="/js/app.js"></script>
 </head>
 
 <body>

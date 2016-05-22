@@ -104,6 +104,13 @@
               else
               {
             ?>
+                <h1 class="center">Welcome to mininotes</h1>
+                <p class="center" style="width: 65%">
+                  Ready to take notes? Login or register below.
+                  Want to find out more? <a href="/about/">follow me!</a>
+                </p>
+              </div>
+              <div class="row">
               <div class="row">
                 <h3 class="center"></h3>
                 <span class="center message">

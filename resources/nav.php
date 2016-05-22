@@ -1,7 +1,7 @@
 <div class="row">
   <ul class="nav">
     <li class="nav active">
-      <a href="/notes/">
+      <a href="/">
           <div class="link-button">
              Notes
           </div>
@@ -27,14 +27,14 @@
       }
     ?>
     <li class="nav logout active">
-      <a href="../out/">
+      <a href="/out/">
         <div class="link-button">
           Logout
         </div>
       </a>
     </li>
       <li class="nav logout active">
-        <a href="../color/">
+        <a href="/color/">
           <div class="link-button color-toggle">
             A
           </div>
