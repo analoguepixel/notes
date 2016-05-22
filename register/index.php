@@ -38,10 +38,12 @@
       {
         $status = "Please ensure that your passwords match.";
       }
-      else if($user == "kwilkers")
+      /*
+      else if($user != "")
       {
         $status = "Sorry. Registrstion is disabled at this time.";
       }
+      */
       else if($status == "good")
       {
         $sql = "INSERT INTO users
