@@ -21,6 +21,8 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffa726">
+    <link rel="icon" type="image/png" href="/icon.png">
     <title>Notes - New Note</title>
 
     <!-- include links -->

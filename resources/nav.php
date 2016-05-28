@@ -2,10 +2,10 @@
   <ul class="nav">
     <li class="nav active">
       <a href="/">
-          <div class="link-button">
-             Notes
-          </div>
-       </a>
+        <div class="link-button">
+           Notes
+        </div>
+     </a>
     </li>
     <li>
     <?php
@@ -14,13 +14,13 @@
     ?>
         <input id="save"
                type="submit" 
-               class="center"
+               class="center button button-primary"
                value="save">
         </li>
         <li>
         <input id="delete"
                type="submit" 
-               class="center"
+               class="center button button-primary"
                value="delete">
        </li>
     <?php

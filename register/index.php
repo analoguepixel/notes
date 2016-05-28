@@ -53,23 +53,18 @@
                   '$user',
                   '$pass',
                   '$email');";
-        $result = $mysqli->query($sql)
-          or die(
-            json_encode(
-              Array(
-                "status"=>"status",
-                "error"=>$mysqli->error
-              )
-            )
-          );
-
-        if($result->num_rows > 0)
+        $result = $mysqli->query($sql);
+        if($result == false)
+        {
+          $status = $mysql->error;
+        }
+        else if($result->num_rows > 0)
         {
           $userObj = $result->fetch_assoc();
         }
         else
         {
-          $status = "Invalid username/password combination";
+          $status = "Registrstion successful. return to the login page.";
         }
       }
 
@@ -81,6 +76,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffa726">
     <title>Notes</title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
     <link rel="stylesheet" type="text/css" href="../css/skeleton.css">
@@ -118,17 +114,12 @@
             <?php
               if($_SESSION['notes'] == true)
               {
-            ?>
-
-              <ul class="note-list" id="noteList">
-              </ul>
-            <?php
               }
               else
               {
             ?>
               <div class="row">
-                <h3 class="center"></h3>
+                <h1 class="center">Register for Mininote!</h3>
                 <span class="center message">
                 <?=$status?>
                 </span>
@@ -155,7 +146,7 @@
                        placeholder="email">
                 <br>
                 <input type="submit" 
-                       class="center"
+                       class="center button button-primary"
                        value="register">
                 <br>
                 <a href="../login">

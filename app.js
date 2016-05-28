@@ -7,18 +7,15 @@ $(function() {
       cache: false,
       async: "false",
       success: function(data) {
-        console.log(data);
         showList(JSON.parse(data));
       }
     });
   }
 
   function showList(list) {
-    console.log(list);
     $noteList = $('#noteList');
     var liStr = '';
     function listItem(id,title, date) {
-      console.log(id + ', ' + title);
       return '<li><a href="note?id=' + id + '">' +
              '<span class="note-title">' +
              title + 

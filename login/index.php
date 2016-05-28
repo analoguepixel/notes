@@ -58,6 +58,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffa726">
     <title>Notes</title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
     <link rel="stylesheet" type="text/css" href="../css/skeleton.css">
@@ -104,7 +105,7 @@
               else
               {
             ?>
-                <h1 class="center">Welcome to mininotes</h1>
+                <h1 class="center">Welcome to Mininote</h1>
                 <p class="center" style="width: 65%">
                   Ready to take notes? Login or register below.
                   Want to find out more? <a href="/about/">follow me!</a>
@@ -120,7 +121,7 @@
               <form method="POST" class="login">
                 <input type="text" 
                        name="username"
-                       class="center loginput"
+                       class="center loginput" 
                        placeholder="username">
                 <br>
                 <input type="password" 
@@ -129,7 +130,7 @@
                        placeholder="password">
                 <br>
                 <input type="submit" 
-                       class="center"
+                       class="center button button-primary"
                        value="login">
                 <br>
                 <a href="../register">

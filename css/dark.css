@@ -6,7 +6,7 @@ a {
   color: #1EAEDB;
 }
 ul.nav {
-	border-bottom: 1px solid #cdcdcd;
+	border-bottom: 1px solid #F57C00;
 }
 input[type="submit"],
 input[type="button"],
@@ -27,6 +27,9 @@ input[type="password"] {
 div.link-button {
   color: #bbb;
 }
+ul.nav div.link-button {
+  color: #fff;
+}
 div.link-button:hover {
   color: #fff;
   border-color: #888;
@@ -41,6 +44,9 @@ div.link-button.color-toggle:hover {
 }
 div.row.title-row {
   border-bottom: 1px solid #bbb;
+}
+ul.sharing li input[type="text"].sharing-textbox {
+  color: #fff;
 }
 
 /* font select section */

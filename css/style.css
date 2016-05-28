@@ -1,4 +1,4 @@
-* {
+ input{
   font-weight: 300;
   font-family: 'Roboto', sans-serif;
 }
@@ -53,6 +53,7 @@ ul.nav {
 ul.nav {
   padding-left: 2%;
   padding-right: 2%;
+  background-color: #FFA726;
   width: 96%;
 }
 ul.nav li {
@@ -91,6 +92,9 @@ div.link-button:hover {
   color: #333;
   border-color: #888;
 }
+ul.nav div.link-button {
+  color: #fff;
+}
 div.link-button.color-toggle {
   color: #bbb;
   background: #555;
@@ -99,11 +103,38 @@ div.link-button.color-toggle {
 div.link-button.color-toggle:hover {
   color: #fff;
 }
+div.row.sharing-row,
 div.row.title-row {
   height: 45px;
   border-bottom: 1px solid #cdcdcd;
   margin-bottom: 0.6em;
   position: relative; /* needed ? */
+}
+div.row.sharing-row {
+  height: 26px;
+}
+div.row.sharing-row div.sharing {
+  height: 100%;
+  width: 100%;
+  padding-left: 2%;
+  outline: 0px solid transparent;
+}
+div.sharing-row ul {
+  width: 100%;
+  height: 100%;
+  float: left;
+  list-style-type: none;
+}
+div.sharing-row ul li {
+  float: left;
+  height: 100%;
+  margin: 0 0.4em;
+}
+ul.sharing li input[type="text"].sharing-textbox {
+  border: 0px;
+  margin: 0;
+  height: 100%;
+  background: none;
 }
 h1.center,
 h2.center,
@@ -193,12 +224,24 @@ h3.title {
   float: left;
   z-index: 0;
 }
+input.notepad,
 div.notepad {
   font-size: 1.2em;
   font-weight: 300;
   height: 70vh;
   min-height: 5em;
   overflow: auto;
+  border: 0px;
+}
+div.notepad::-moz-selection,
+div.notepad *::-moz-selection {
+  background: #FFE246;
+  color: #000;
+}
+div.notepad::selection,
+div.notepad *::selection {
+  background: #FFE246;
+  color: #000;
 }
 .sans,
 div.notepad.sans *,

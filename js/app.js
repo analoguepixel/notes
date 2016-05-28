@@ -1,10 +1,13 @@
 "use strict";
 $(function() {
-  var $titleBox  = $('#title');
-  var $textBox   = $('#text');
-  var $saveBtn   = $('#save');
-  var $deleteBtn = $('#delete');
-  var $status    = $('#noteStatus');
+  var $titleBox   = $('#title');
+  var $textBox    = $('#text');
+  var $titleField = $('#title');
+  var $saveBtn    = $('#save');
+  var $deleteBtn  = $('#delete');
+  var $status     = $('#noteStatus');
+  var $newGuest   = $('#new-guest');
+  var $guestList  = $('#guest-list');
 
   // font selection buttons
   var $fontBtns = {
@@ -46,7 +49,6 @@ $(function() {
       cache: false,
       success: function(data){
         data = JSON.parse(data);
-        console.log(data);
 
         // if an id is returned, set window.id to the new id
         if(data.id && data.id > 0)
@@ -69,7 +71,6 @@ $(function() {
       cache: false,
       success: function(data){
         data = JSON.parse(data);
-        console.log(data);
         if(data.status=='success')
           window.location.href="../";
       }
@@ -103,8 +104,62 @@ $(function() {
      save();
    }
   }
+  
+  // addGuest function
+  function addGuest() {
+    var guestName = $newGuest.val();
+    $newGuest.val('');
+    var newGuestEntry = document.createElement('li');
+    newGuestEntry.innerHTML = guestName;
+    newGuestEntry.id = 'guest-' + guestName;
+    newGuestEntry.className = 'inactive';
+    var $newGuestEntry = $(newGuestEntry);
+    $newGuest.parent('li').before($newGuestEntry);
+
+    // ajax
+    var payload = {'note':  id,
+                   'guest': guestName};
+    $.ajax({
+      type: "POST",
+      url: "../sharing/",
+      data: payload,
+      cache: false,
+      success: function(data){
+        //data = JSON.parse(data);
+        console.log(data);
+
+        // if an id is returned, set window.id to the new id
+        if(data.id && data.id > 0)
+        {
+          id = data.id;
+        }
+        $status.text(data.status);
+      }
+    });
+
+  }
+
+  // removeGuest function
+  function removeGuest($guest) {
+    $guest.remove();
+  }
+
 
   $textBox.on("input", autoSave); 
+  
+  $titleField.on("input", autoSave); 
+
+  $newGuest.keyup( function(e) {
+    if(e.which == 32) {
+      addGuest();
+    }
+    else if (e.which == 8) {
+      if($newGuest.val() == '')
+      {
+        removeGuest($newGuest.parent('li').prev());
+      }
+    }
+  });
 
   $saveBtn.on('click', save);
 

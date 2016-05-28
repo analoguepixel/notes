@@ -10,6 +10,8 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffa726">
+    <link rel="icon" type="image/png" href="/icon.png">
     <title>Notes</title>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/skeleton.css">
@@ -36,7 +38,7 @@
                 <a href="new/">
                 <input id="new"
                        type="submit" 
-                       class="center"
+                       class="center button button-primary"
                        value="new">
                 </a>
               </li>
@@ -79,7 +81,7 @@
               {
             ?>
               <div class="row">
-                <h1 class="center">Welcome to mininotes</h1>
+                <h1 class="center">Welcome to Mininote</h1>
                 <p class="center">
                   Ready to take notes? Login or register below.
                 </p>
