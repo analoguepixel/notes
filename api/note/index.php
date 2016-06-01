@@ -1,32 +1,32 @@
 <?php
   session_start();
-  require('../db.php');
+  $input = $_POST;
+  require_once $_SERVER["DOCUMENT_ROOT"] . '/api/db.php';
   $mysqli = ConnectToDatabase();
-  if(empty($_SESSION['notes']) ||
-    empty($_GET['id']))
-  {
-    header('Location: ../');
-  }
-  $id = $_GET["id"];
+
+  $uid = $input["uid"];
+  $note = $input["note"];
   $owner = true;
 
-
-  $sql = "SELECT DISTINCT * FROM notes WHERE id=$id";
+  $sql = "SELECT DISTINCT * FROM notes WHERE id=$note";
   $exe = $mysqli->query($sql)
     or die(mysqli_error($mysqli));
 
+  // TODO: rewrite to check for num_rows and get $data from fetch_assoc drectly
   while($row = $exe->fetch_assoc()) {
     $myArray[] = $row;
   }
   $data = $myArray[0];
 
-  if($data["uid"] != $_SESSION["uid"])
+  if($data["uid"] != $uid)
   {
     $owner = false;
 
     // query the sharing table to see if current user is a guest
     // on this note
-    $sql = "SELECT DISTINCT * FROM sharing WHERE note=$id";
+    $sql = "SELECT DISTINCT * FROM sharing WHERE note=$note";
+
+    // return a json object
     $exe = $mysqli->query($sql)
       or die(mysqli_error($mysqli));
 
@@ -41,14 +41,12 @@
     }
     else
     {
-  
       $data["title"] = "No permission";
       $data["body"] = "We're sorry, but you do not have permission to view this 
                        note. Please contact the owner of this note for permission
                        to view it. If the problem persists, please email us at.";
       $data["editable"] = false;
     }
-
   }
   else
   {
@@ -78,4 +76,5 @@
       $font = 'sans';
     }
   }
+  return json_encode($data);
 ?>

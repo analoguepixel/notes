@@ -8,6 +8,10 @@ $(function() {
       async: "false",
       success: function(data) {
         showList(JSON.parse(data));
+      },
+      // add failure function
+      failure: function(data) {
+
       }
     });
   }
@@ -31,6 +35,25 @@ $(function() {
     $noteList.html(liStr);
   }
   getList();
+
+  function showNote(note) {
+
+    var payload = {'note':  note.note,
+                   'uid':     id};
+
+    $.ajax({
+      type: "POST",
+      url: "/api/note/",
+      cache: false,
+      async: "false",
+      data: payload,
+      success: function(data) {
+        (JSON.parse(data));
+      }
+    });
+  }
+  var note = {"id": id, "note": 148};
+  $('#testbutton').click(showNote(note));
 
 
 });

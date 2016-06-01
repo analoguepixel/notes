@@ -4,6 +4,7 @@
   {
     header("Location: login/");
   }
+  $id = $_SESSION["uid"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,6 +21,7 @@
       <link rel="stylesheet" type="text/css" href="css/dark.css">
     <?php } ?>
     <script src="js/jq.js"></script>
+    <script>var id = <?=$id?>;</script>
     <script src="app.js"></script>
 </head>
 
