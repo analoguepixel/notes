@@ -42,14 +42,12 @@
     }
     else
     {
-  
       $data["title"] = "No permission";
       $data["body"] = "We're sorry, but you do not have permission to view this 
                        note. Please contact the owner of this note for permission
                        to view it. If the problem persists, please email us at.";
       $data["editable"] = false;
     }
-
   }
   else
   {

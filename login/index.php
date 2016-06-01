@@ -18,7 +18,8 @@
 
       $sql = "SELECT id, 
                 user, 
-                pass 
+                pass,
+                color
               FROM users
               WHERE user='$user';";
       $result = $mysqli->query($sql)
@@ -39,6 +40,17 @@
           $_SESSION["notes"] = true;
           $_SESSION["uid"]   = $userObj["id"];
           $_SESSION["user"]  = $userObj["username"];
+          $_SESSION["color"] = $userObj["color"];
+          /*
+          echo "<pre>";
+          print_r($userObj);
+          echo "</pre>";
+          echo "<pre>";
+          print_r($_SESSION);
+          echo "</pre>";
+          echo $_SESSION["color"] ;
+          //echo($_SESSION["color"]):
+          */
           header("Location: ../index.php");
         }
         else
