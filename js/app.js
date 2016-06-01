@@ -150,7 +150,9 @@ $(function() {
   $titleField.on("input", autoSave); 
 
   $newGuest.keyup( function(e) {
-    if(e.which == 32) {
+    console.log(e.which);
+    if((e.which === 32 || e.which === 13) &&
+        $newGuest.val() !== '' ) {
       addGuest();
     }
     else if (e.which == 8) {
