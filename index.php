@@ -25,46 +25,7 @@
 
 <body>
     <div id="page" class="container">
-        <div class="row">
-            <ul class="nav">
-              <li class="nav active">
-                <a href="./">
-                  <div class="link-button">
-                    Notes
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="new/">
-                <input id="new"
-                       type="submit" 
-                       class="center button button-primary"
-                       value="new">
-                </a>
-              </li>
-              <?php
-                if($_SESSION['notes'] == true)
-                {
-              ?>
-                  <li class="nav logout active">
-                      <a href="./out">
-                        <div class="link-button">
-                          Logout 
-                        </div>
-                      </a>
-                  </li>
-              <?php
-                }
-              ?>
-              <li class="nav logout active">
-                <a href="color/">
-                  <div class="link-button color-toggle">
-                    A 
-                  </div>
-                </a>
-            </li>
-          </ul>
-        </div>
+      <?php require('resources/nav.php');?>
 
         <div class="page-body">
           <div class="row">

@@ -32,14 +32,17 @@
           )
         );
 
+      // if username valid
       if($result->num_rows > 0)
       {
         $userObj = $result->fetch_assoc();
+
+        // if password valid
         if($userObj["pass"] == $pass)
         {
           $_SESSION["notes"] = true;
           $_SESSION["uid"]   = $userObj["id"];
-          $_SESSION["user"]  = $userObj["username"];
+          $_SESSION["user"]  = $userObj["user"];
           $_SESSION["color"] = $userObj["color"];
           /*
           echo "<pre>";
@@ -51,6 +54,19 @@
           echo $_SESSION["color"] ;
           //echo($_SESSION["color"]):
           */
+
+          // create persistent session
+          /* to be continued. . .
+          require_once $_SERVER["DOCUMENT_ROOT"] . '/resources/fns.php';
+          if(createPersistentSession(session_id(), $userObj["id"]))
+          {
+          }
+          else
+          {
+            session_destroy();
+          }
+          */
+
           header("Location: ../index.php");
         }
         else

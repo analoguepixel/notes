@@ -17,6 +17,7 @@
     $hour = $minute * 60;
     $day = $hour * 24;
     $week = $day * 7;
+    $year = $day * 30;
     $year = $week * 52;
     $returnString = "";
     $difference = $today - $date;
@@ -26,7 +27,7 @@
       $units = IntDiv($difference , $minute);
       if($units < 2)
       {
-        $returnString = "an minute ago";
+        $returnString = "a minute ago";
       }
       else
       {

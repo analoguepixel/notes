@@ -33,6 +33,13 @@
         </div>
       </a>
     </li>
+    <li class="nav logout">
+      <a href="/profile/">
+        <div class="link-button">
+          <?=$_SESSION["user"]?>
+        </div>
+      </a>
+    </li>
       <li class="nav logout active">
         <a href="/color/">
           <div class="link-button color-toggle">

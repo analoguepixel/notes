@@ -21,13 +21,16 @@
   $data = $myArray[0];
 
 
+  // if user is not note owner 
   if($data["uid"] != $_SESSION["uid"])
   {
     $owner = false;
 
-    // query the sharing table to see if current user is a guest
-    // on this note
-    $sql = "SELECT DISTINCT * FROM sharing WHERE note=$id";
+    // query the sharing table for note and user id record
+    $sql = "SELECT DISTINCT * 
+            FROM sharing 
+            WHERE note=$id AND
+              guest=$_SESSION[uid]";
     $exe = $mysqli->query($sql)
       or die(mysqli_error($mysqli));
 
@@ -35,10 +38,6 @@
     {
       $sharing = $exe->fetch_assoc();
       $data["editable"] = $sharing["editable"];
-    }
-
-    if($sharing["guest"] = $_SESSION["uid"])
-    {
     }
     else
     {
@@ -49,10 +48,11 @@
       $data["editable"] = false;
     }
   }
+  // user is note owner
   else
   {
-    if( ($data['locked'] == true) ||
-        ($data["editable"] == 0) )
+    // check to see if note is locked/editable
+    if($data['locked'] == true)
     {
       $data["editable"] = false;
     }
@@ -60,23 +60,41 @@
     {
       $data["editable"] = true;
     }
-    // a hack, reorganize editability code
-    if($owner == true) $data["editable"] = true;
+  }
 
+  $font = 'sans';
+  if($data['font'] == 3)
+  {
+    $font = 'hand';
+  }
+  else if($data['font'] == 2)
+  {
+    $font = 'mono';
+  }
+  else if($data['font'] == 1)
+  {
+    $font = 'serif';
+  }
+  else
+  {
     $font = 'sans';
-    if($data['font'] == 2)
+  }
+
+  if($data["editable"])
+  {
+    $sql = "SELECT * FROM shared_users WHERE note=$id";
+
+    $exe = $mysqli->query($sql)
+      or die(mysqli_error($mysqli));
+
+    if($exe->num_rows > 0)
     {
-      $font = 'mono';
-    }
-    else if($data['font'] == 1)
-    {
-      $font = 'serif';
-    }
-    else
-    {
-      $font = 'sans';
+      while($row = $exe->fetch_assoc()) {
+        $guests[] = $row;
+      }
     }
   }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -121,6 +139,10 @@
                  class="font-select mono <?=$font=='mono'?'active':''?>">
               A
             </div>
+            <div id="fntHand"
+                 class="font-select hand <?=$font=='hand'?'active':''?>">
+              A
+            </div>
           </div>
         </div>
         <?php 
@@ -129,6 +151,17 @@
         ?>
             <div class="row sharing-row">
               <ul id="guest-list" class="sharing">
+                <?php
+                  if(count($guests) > 0)
+                  {
+                    foreach($guests as $guest)
+                    {
+                      echo '<li id="guest-' . $guest["user"] . '" class="inactive">' . 
+                            $guest[user] .
+                            '</li>';
+                    }
+                  }
+                  ?>
                 <li>
                   <input type="text" id="new-guest" class="sharing-textbox">
 

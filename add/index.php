@@ -9,7 +9,11 @@
   $font  = -1;
 
   // set font value
-  if($data['font'] == 'mono')
+  if($data['font'] == 'hand')
+  {
+    $font = 3;
+  }
+  else if($data['font'] == 'mono')
   {
     $font = 2;
   }

@@ -13,13 +13,15 @@ $(function() {
   var $fontBtns = {
     "sans":  $('#fntSans'),
     "serif": $('#fntSerif'),
-    "mono":  $('#fntMono')
+    "mono":  $('#fntMono'),
+    "hand":  $('#fntHand')
   }
 
   var fonts = [
     {'font': 'sans',  'button': $fontBtns.sans},
     {'font': 'serif', 'button': $fontBtns.serif},
-    {'font': 'mono',  'button': $fontBtns.mono}
+    {'font': 'mono',  'button': $fontBtns.mono},
+    {'font': 'hand',  'button': $fontBtns.hand}
   ];
 
   //var selectedFont;
@@ -95,7 +97,7 @@ $(function() {
   function changeFont(font) {
    return function() {
      // change font classes
-     $textBox.removeClass('sans serif mono').addClass(font);
+     $textBox.removeClass('sans serif mono hand').addClass(font);
      $('.font-select.active').removeClass('active');
      $('.font-select.' + font).addClass('active');
 

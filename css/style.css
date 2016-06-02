@@ -5,6 +5,8 @@
 body {
   margin: 0;
   font-size: 1.6rem;
+  background-color: #f9f8e8;
+  color: #232323;
 }
 .hidden {
   display: none;
@@ -257,6 +259,11 @@ div.notepad.serif {
 div.notepad.mono *,
 div.notepad.mono {
   font-family: 'Roboto Mono', monospace;
+}
+.hand,
+div.notepad.hand *,
+div.notepad.hand {
+  font-family: 'Indie Flower', cursive;
 }
 span.note-status {
   z-index: 5;
