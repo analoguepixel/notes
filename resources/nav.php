@@ -7,11 +7,24 @@
         </div>
      </a>
     </li>
-    <li>
     <?php
+      if($home == true)
+      {
+        ?>
+        <li class="nav active">
+          <a href="/new">
+            <div class="link-button">
+              New 
+            </div>
+         </a>
+        </li>
+        <?php
+      }
+
       if($data["editable"])
       {
     ?>
+        <li>
         <input id="save"
                type="submit" 
                class="center button button-primary"

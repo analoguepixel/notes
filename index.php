@@ -4,6 +4,8 @@
   {
     header("Location: login/");
   }
+
+  $home = true;
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,85 +1,63 @@
 <?php
   session_start();
+  require_once $_SERVER["DOCUMENT_ROOT"] . '/db.php';
+  require_once $_SERVER["DOCUMENT_ROOT"] . '/resources/fns.php';
+
+  if( isset($_COOKIE["sid"]) &&
+      isset($_COOKIE["user"]) &&
+      $_SERVER['REQUEST_METHOD'] != 'POST' )
+  {
+    echo ' cookie ';
+    $cookieId = $_COOKIE["sid"];
+    echo $cookieId;
+    print_r($_COOKIE);
+    $user = Array(
+      "user" => $_COOKIE['user'],
+      "sid"  => $cookieId
+    );
+    $status = login($user);
+    if($status == 'good')
+    {
+      header('Location: /');
+    }
+
+  }
+  else if($_SERVER['REQUEST_METHOD'] == 'GET')
+  {
+    //echo 'just get';
+  }
+  else
+  {
+    //session_start();
+  }
+
+  // if login data sent
   if($_SERVER['REQUEST_METHOD'] == 'POST')
   {
-    if(isset($_POST['password']) && isset($_POST['username']))
+    echo 'POST';
+    if( isset($_POST['password']) &&
+         isset($_POST['username']) )
     {
-      require('../db.php');
       $data = json_decode(file_get_contents('php://input'), true);
       $mysqli = ConnectToDatabase();
-
-      // login credentials
-      $pass = $_POST['password'];
-      $user = $mysqli->real_escape_string($_POST['username']);
-      $pass = hash('sha256', $pass . "salty");
-
-      // return variables 
-      $status = "";
-
-      $sql = "SELECT id, 
-                user, 
-                pass,
-                color
-              FROM users
-              WHERE user='$user';";
-      $result = $mysqli->query($sql)
-        or die(
-          json_encode(
-            Array(
-              "status"=>"status",
-              "error"=>$mysqli->error
-            )
-          )
-        );
-
-      // if username valid
-      if($result->num_rows > 0)
+      $user = Array(
+        "user" => $_POST['username'],
+        "pass" => $_POST['password']
+      );
+      $status = login($user);
+      if($status == 'good')
       {
-        $userObj = $result->fetch_assoc();
-
-        // if password valid
-        if($userObj["pass"] == $pass)
-        {
-          $_SESSION["notes"] = true;
-          $_SESSION["uid"]   = $userObj["id"];
-          $_SESSION["user"]  = $userObj["user"];
-          $_SESSION["color"] = $userObj["color"];
-          /*
-          echo "<pre>";
-          print_r($userObj);
-          echo "</pre>";
-          echo "<pre>";
-          print_r($_SESSION);
-          echo "</pre>";
-          echo $_SESSION["color"] ;
-          //echo($_SESSION["color"]):
-          */
-
-          // create persistent session
-          /* to be continued. . .
-          require_once $_SERVER["DOCUMENT_ROOT"] . '/resources/fns.php';
-          if(createPersistentSession(session_id(), $userObj["id"]))
-          {
-          }
-          else
-          {
-            session_destroy();
-          }
-          */
-
-          header("Location: ../index.php");
-        }
-        else
-        {
-          $status = "Invalid username/password combination";
-        }
+        header('Location: /');
       }
-      else
-      {
-        $status = "Invalid username/password combination";
-      }
+
+    }
+    else
+    {
+      $status = 'please provide a username and password';
     }
   }
+
+
 ?>
 <!DOCTYPE html>
 <html>
