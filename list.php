@@ -21,6 +21,7 @@
     //TODO: assign exe output to array to give to client
     while($row = $exe->fetch_assoc()) {
       $row["date"] = relativeTime($row["date"]);
+      $row['summary'] = preg_replace('/<[^>]*>/', ' ', $row['summary']);
       $myArray[] = $row;
     }
 
