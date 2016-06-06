@@ -31,7 +31,7 @@
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  ax-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box; }
@@ -206,8 +206,10 @@ input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
   color: #FFF;
-  background-color: #ffa726;
-  border-color: #ffa726; }
+  qbackground-color: #ffa726;
+  background-color: transparent;
+  qborder-color: #ffa726; 
+  border-color: transparent; }
 .button.button-primary:hover,
 button.button-primary:hover,
 input[type="submit"].button-primary:hover,
