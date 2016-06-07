@@ -36,6 +36,9 @@
               {
             ?>
 
+              <div class="row sharing-row">
+                    <input type="text" id="search" class="search-textbox">
+              </div>
               <ul class="note-list sans" id="noteList">
               </ul>
             <?php
@@ -49,13 +52,13 @@
                   Ready to take notes? Login or register below.
                 </p>
                 <p class="center">
-                  Want ti find out more? <a href="about/">follow me!</a>
+                  Want to find out more? <a href="about/">follow me!</a>
                 </p>
               </div>
               <div class="row">
                 <h3 class="center">login</h3>
               </div>
-              <form method="POST" class="login" action="login.php">
+              <form method="POST" class="login" action="login/">
                 <input type="text" 
                        name="username"
                        class="center loginput"

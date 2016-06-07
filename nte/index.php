@@ -120,66 +120,63 @@
       <?php require('../resources/nav.php');?>
 
       <div class="page-body">
-        <div class="note-headers">
-          <div class="row title-row">
-            <h3  id="title"
-                 <?= ($data["editable"])?"contenteditable":""?>
-                 class="title">
-                 <?= $data["title"] ?>
-            </h3>
-            <div class="toggle-buttons <?=($data["editable"])?:"hidden"?>">
-              <div id="fntSans" 
-                   class="font-select sans <?=$font=='sans'?'active':''?>">
-                A
-              </div>
-              <div id="fntSerif" 
-                   class="font-select serif <?=$font=='serif'?'active':''?>">
-                A
-              </div>
-              <div id="fntMono"
-                   class="font-select mono <?=$font=='mono'?'active':''?>">
-                A
-              </div>
-              <div id="fntHand"
-                   class="font-select hand <?=$font=='hand'?'active':''?>">
-                A
-              </div>
+        <div class="row title-row">
+          <h3  id="title"
+               <?= ($data["editable"])?"contenteditable":""?>
+               class="title">
+               <?= $data["title"] ?>
+          </h3>
+          <div class="toggle-buttons <?=($data["editable"])?:"hidden"?>">
+            <div id="fntSans" 
+                 class="font-select sans <?=$font=='sans'?'active':''?>">
+              A
+            </div>
+            <div id="fntSerif" 
+                 class="font-select serif <?=$font=='serif'?'active':''?>">
+              A
+            </div>
+            <div id="fntMono"
+                 class="font-select mono <?=$font=='mono'?'active':''?>">
+              A
+            </div>
+            <div id="fntHand"
+                 class="font-select hand <?=$font=='hand'?'active':''?>">
+              A
             </div>
           </div>
-          <?php 
-            if($owner)
-            {
-          ?>
-              <div class="row sharing-row">
-                <ul id="guest-list" class="sharing">
-                  <?php
-                    if(count($guests) > 0)
+        </div>
+        <?php 
+          if($owner)
+          {
+        ?>
+            <div class="row sharing-row">
+              <ul id="guest-list" class="sharing">
+                <?php
+                  if(count($guests) > 0)
+                  {
+                    foreach($guests as $guest)
                     {
-                      foreach($guests as $guest)
-                      {
-                        echo '<li id="guest-' . $guest["user"] . '" class="inactive">' . 
-                              $guest[user] .
-                              '</li>';
-                      }
+                      echo '<li id="guest-' . $guest["user"] . '" class="inactive">' . 
+                            $guest[user] .
+                            '</li>';
                     }
-                    ?>
-                  <li>
-                    <input type="text" id="new-guest" class="sharing-textbox">
+                  }
+                  ?>
+                <li>
+                  <input type="text" id="new-guest" class="sharing-textbox">
 
-                  </li>
-                </ul>
-              </div>
+                </li>
+              </ul>
+            </div>
         <?php
           }
         ?>
-        </div>
-        <div class="row notepad-row">
-          <textarea id="text"
-                 type="textarea"
-                 <?= ($data["editable"])?"autofocus":""?>
-                 wrap="hard"
-                 class="notepad center <?=$font?>">
-<?= $row['summary'] = preg_replace('/<[^>]*>/', "\n", $data['body']) ?></textarea>
+        <div class="row">
+          <div id="text"
+               <?= ($data["editable"])?"contenteditable autofocus":""?>
+               class="notepad center <?=$font?>">
+               <?= $data["body"] ?>
+          </div>
           <span id="noteStatus"
                 class="note-status">
           </span>

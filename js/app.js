@@ -31,14 +31,14 @@ $(function() {
   function save() {
     if(id) 
     {
-      var payload = {'note':  $textBox.html().trim(), 
+      var payload = {'note':  $textBox.val().trim(), 
                      'title': $titleBox.text().trim(), 
                      'font':  window.selectedFont,
                      'id':     id};
     }
     else
     {
-      var payload = {'note':  $textBox.html().trim(), 
+      var payload = {'note':  $textBox.val().trim(), 
                      'title': $titleBox.text().trim(), 
                      'font':  window.selectedFont,
                      'id':     id};

@@ -205,7 +205,13 @@ div.toggle-buttons div.font-select.active:hover {
   color: #fff;
 }
 
-/* note list section */
+/* note list page section */
+input.search-textbox {
+  border: 0px;
+  margin: 0;
+  height: 100%;
+  background: none;
+}
 ul.note-list {
   padding-left: 2%;
   list-style-type: none;
@@ -235,6 +241,9 @@ ul.note-list span.date {
 }
 
 /* note page section */
+div.note-headers {
+  height: 106px;
+}
 .title,
 div.notepad,
 .title:focus,
@@ -249,15 +258,25 @@ h3.title {
   float: left;
   z-index: 0;
 }
-input.notepad,
+div.row.notepad-row {
+  height: calc(100% - 106px);
+  width: 100%;
+}
+textarea.notepad:parent {
+  height: 100%;
+}
+textarea.notepad,
 div.notepad {
   max-width: 960px;
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
   float: left;
   font-size: 1.2em;
   font-weight: 300;
   min-height: 5em;
   border: 0px;
-  padding-bottom: 22px;
+  margin-bottom: 0;
 }
 div.notepad::-moz-selection,
 div.notepad *::-moz-selection {
